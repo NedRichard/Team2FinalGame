@@ -28,9 +28,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //SimpleMove();
 
-        horizontalMov = Input.GetAxis("Horizontal") * Time.deltaTime * playerRotationSpeed;
+        //horizontalMov = Input.GetAxis("Horizontal") * Time.deltaTime * playerRotationSpeed;
 
-        verticalMov = Input.GetAxis("Vertical") * Time.deltaTime * playerSpeed;
+        //verticalMov = Input.GetAxis("Vertical") * Time.deltaTime * playerSpeed;
 
         //playerRot = new Vector3(0, horizontalMov, 0);
 
@@ -43,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Vector3 forwardInput = new Vector3(0, 0, verticalMov);
 
-        
+        horizontalMov = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * playerRotationSpeed;
+
+        verticalMov = Input.GetAxis("Vertical") * Time.fixedDeltaTime * playerSpeed;
+
         MovePlayer();
 
         //Quaternion deltaRot = Quaternion.Euler(playerRot * Time.fixedDeltaTime);
