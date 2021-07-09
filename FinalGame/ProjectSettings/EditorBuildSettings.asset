@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/JoniTest1.unity
+    guid: e96516799e8b7eb4d9570b076e304f3f
   m_configObjects: {}

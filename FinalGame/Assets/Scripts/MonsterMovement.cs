@@ -27,4 +27,13 @@ public class MonsterMovement : MonoBehaviour
         monsterNav.SetDestination(player.transform.position);
     }
 
+    void OnTriggerEnter(Collider other) {
+
+        if(other.CompareTag("Player")) {
+            Debug.Log("Got you!");
+            //Application.Quit();
+        }
+        
+    }
+
 }
