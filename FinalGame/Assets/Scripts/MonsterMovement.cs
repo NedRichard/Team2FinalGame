@@ -6,21 +6,19 @@ using UnityEngine.AI;
 public class MonsterMovement : MonoBehaviour
 {
 
+    //For waypoint navigation
     public GameObject[] locations;
-
-    public Transform pathwayHolder;
-
     public NavMeshAgent monsterNav;
+    public Transform pathwayHolder;
+    public bool changingWaypoint = false;
+    public bool waypointReached = false;
+    public static int currentWaypoint = 0;
 
+
+    //For targeting player
     public GameObject player;
-
     public static bool playerSeen = false;
 
-    public bool changingWaypoint = false;
-
-    public bool waypointReached = false;
-
-    public static int currentWaypoint = 0;
 
     void OnDrawGizmos() {
         foreach (Transform waypoint in pathwayHolder) {
@@ -53,10 +51,29 @@ public class MonsterMovement : MonoBehaviour
 
     void ChangeWaypoint() {
 
-        Debug.Log("Changing waypoint!");
+        //Debug.Log("Changing waypoint!");
 
-        Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
-        int randomWaypoint;
+        //Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
+        Vector3[] waypoints = new Vector3[locations.Length];
+
+        int lastWaypoint = currentWaypoint;
+
+        Debug.Log("Last waypoint is " + lastWaypoint);
+
+        int randomWaypoint = Random.Range(0, waypoints.Length);
+
+        Debug.Log("Next waypoint is " + randomWaypoint);
+
+        currentWaypoint = randomWaypoint;
+
+        while(lastWaypoint == randomWaypoint) {
+            randomWaypoint = Random.Range(0, waypoints.Length);
+            currentWaypoint = randomWaypoint;
+        }
+
+        
+
+        /**
 
         if (changingWaypoint) {
 
@@ -67,6 +84,8 @@ public class MonsterMovement : MonoBehaviour
             currentWaypoint = randomWaypoint;
             Debug.Log("Enemy Waypoint changed to " + currentWaypoint);
         }
+
+        **/
 
         /**
         do {
@@ -80,15 +99,29 @@ public class MonsterMovement : MonoBehaviour
                 Debug.Log("Enemy Waypoint changed to " + currentWaypoint);
             }
 
-        } while (randomWaypoint == currentWaypoint);
+            currentWaypoint = randomWaypoint;
 
+        } while (randomWaypoint == currentWaypoint);
         **/
+
+        
         changingWaypoint = false;
 
     }
 
     void MoveToWaypoint() {
-        monsterNav.SetDestination(pathwayHolder.GetChild(currentWaypoint).transform.position); 
+        //monsterNav.SetDestination(pathwayHolder.GetChild(currentWaypoint).transform.position); 
+
+        if(monsterNav.gameObject.transform.position != locations[currentWaypoint].transform.position) {
+            monsterNav.SetDestination(locations[currentWaypoint].transform.position);
+        }
+
+        if (monsterNav.gameObject.transform.position == locations[currentWaypoint].transform.position) {
+            changingWaypoint = true;
+            ChangeWaypoint();
+        }
+
+        
     }
 
     void ChasePlayer() {
@@ -97,10 +130,10 @@ public class MonsterMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
 
-        //int index = locations[i];
-
+        
+        //Currently not used
         if(other.CompareTag("Waypoint")) {
-            Debug.Log("Reached current waypoint!");
+            //Debug.Log("Reached current waypoint!");
             changingWaypoint = true;
             ChangeWaypoint();
         }
