@@ -112,11 +112,13 @@ public class MonsterScript : MonoBehaviour
     void Update()
     {
 
-        if((monsterNav.gameObject.transform.position != locations[currentWaypoint].transform.position) && !playerInSight) {
+        if(monsterNav.gameObject.transform.position != locations[currentWaypoint].transform.position && !playerInSight) 
+        {
             monsterNav.SetDestination(locations[currentWaypoint].transform.position);
         }
 
-        if ((monsterNav.gameObject.transform.position == locations[currentWaypoint].transform.position) && !playerInSight) {
+        if ((monsterNav.gameObject.transform.position.x == locations[currentWaypoint].transform.position.x) 
+        && (monsterNav.gameObject.transform.position.z == locations[currentWaypoint].transform.position.z) && !playerInSight) {
             //Debug.Log("Reached current waypoint!");
             changingWaypoint = true;
             ChangeWaypoint();
@@ -238,12 +240,13 @@ public class MonsterScript : MonoBehaviour
             monsterNav.SetDestination(locations[currentWaypoint].transform.position);
         }
 
-        if (monsterNav.gameObject.transform.position == locations[currentWaypoint].transform.position) {
+        if ((monsterNav.gameObject.transform.position.x == locations[currentWaypoint].transform.position.x) 
+        && (monsterNav.gameObject.transform.position.z == locations[currentWaypoint].transform.position.z)) 
+        {
             changingWaypoint = true;
             ChangeWaypoint();
         }
 
-        
     }
 
     void ChasePlayer() {
@@ -262,7 +265,7 @@ public class MonsterScript : MonoBehaviour
 
         if(other.CompareTag("Player")) {
             //Debug.Log("Got you!");
-            //Application.Quit();
+            Application.Quit();
         }
         
     }
