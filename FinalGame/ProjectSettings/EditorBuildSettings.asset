@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Liisa scene.unity
+    guid: 8c899bd141654db4eab00f19c33eaef0
+  - enabled: 0
     path: Assets/Scenes/JoniTest1.unity
     guid: e96516799e8b7eb4d9570b076e304f3f
   m_configObjects: {}
