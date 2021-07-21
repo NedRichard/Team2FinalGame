@@ -17,7 +17,6 @@ public class MonsterScript : MonoBehaviour
     //For targeting player
     public GameObject player;
     public static bool playerSeen = false;
-
     public static bool playerInSight;
 
     //For FOV functions
@@ -121,7 +120,7 @@ public class MonsterScript : MonoBehaviour
         && (monsterNav.gameObject.transform.position.z == locations[currentWaypoint].transform.position.z) && !playerInSight) {
             //Debug.Log("Reached current waypoint!");
             changingWaypoint = true;
-            ChangeWaypoint();
+            //ChangeWaypoint();
         }
 
         if(playerInSight) {

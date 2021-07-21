@@ -7,6 +7,12 @@ TagManager:
   - Monster
   - Checkpoint
   - Waypoint
+  - LoungeKey
+  - Lobby Exit
+  - Lounge Door
+  - ClosetTrigger
+  - LoungeDoorTrigger
+  - GeneratorPart
   layers:
   - Default
   - TransparentFX

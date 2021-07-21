@@ -4,44 +4,56 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Player positioning
     public GameObject Player;
-
     public Rigidbody playerBody;
-
     public float playerSpeed = 150f;
-
     public float playerRotationSpeed = 150f;
+    
+    //Player controls
+    public float horizontalMov;
+    public float verticalMov;
+    Vector3 playerRot;
 
+    //Obsolete
     public bool isMoving;
 
-    public float horizontalMov;
+    //Player FOV
+    public float viewRadius;
+    public float fovAngle;
+    RaycastHit hit;
 
-    public float verticalMov;
+    //Player interactions
 
-    Vector3 playerRot;
+    public static bool interact = false;
+    public static bool keyCollected = false;
+    public static bool partCollected = false;
+    public static bool generatorFixed = false;
+    public static bool noteRead = false;
+
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
+    }
 
     void Start() {
         playerBody = this.GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        //SimpleMove();
-
-        //horizontalMov = Input.GetAxis("Horizontal") * Time.deltaTime * playerRotationSpeed;
-
-        //verticalMov = Input.GetAxis("Vertical") * Time.deltaTime * playerSpeed;
-
-        //playerRot = new Vector3(0, horizontalMov, 0);
-
-        
-
-
+    void Update() {
+        if (Input.GetButtonDown("Jump")) {
+            interact = true;
+        } else {
+            interact = false;
+        }
     }
 
     void FixedUpdate() {
 
         //Vector3 forwardInput = new Vector3(0, 0, verticalMov);
+
+        
 
         horizontalMov = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * playerRotationSpeed;
 
