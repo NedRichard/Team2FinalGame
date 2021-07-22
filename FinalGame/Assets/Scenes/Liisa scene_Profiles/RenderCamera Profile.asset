@@ -18,13 +18,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 9.29
+    value: 24.01
   threshold:
     overrideState: 1
     value: 1.04
   softKnee:
     overrideState: 1
-    value: 0.486
+    value: 0.374
   clamp:
     overrideState: 1
     value: 65472
@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0.8066038, g: 0.8470341, b: 1, a: 1}
   fastMode:
     overrideState: 1
     value: 0
@@ -107,16 +107,16 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   spectralLut:
     overrideState: 1
     value: {fileID: 0}
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.154
+    value: 0.102
   fastMode:
-    overrideState: 0
+    overrideState: 1
     value: 0
 --- !u!114 &7279562131560433062
 MonoBehaviour:
@@ -177,58 +177,58 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0.6047526, g: 0.68087566, b: 0.8490566, a: 1}
   hueShift:
     overrideState: 1
-    value: 0
+    value: -1
   saturation:
     overrideState: 1
-    value: -20
+    value: 11.3
   brightness:
     overrideState: 1
     value: 0
   postExposure:
     overrideState: 1
-    value: 0
+    value: -0.26
   contrast:
     overrideState: 1
-    value: -0.6
+    value: 0.9
   mixerRedOutRedIn:
     overrideState: 1
-    value: 100
+    value: 97
   mixerRedOutGreenIn:
     overrideState: 1
-    value: 0
+    value: 12
   mixerRedOutBlueIn:
     overrideState: 1
-    value: 0
+    value: -6
   mixerGreenOutRedIn:
     overrideState: 1
     value: 0
   mixerGreenOutGreenIn:
     overrideState: 1
-    value: 100
+    value: 67
   mixerGreenOutBlueIn:
     overrideState: 1
-    value: 0
+    value: 14
   mixerBlueOutRedIn:
     overrideState: 1
-    value: 0
+    value: 15
   mixerBlueOutGreenIn:
     overrideState: 1
-    value: 0
+    value: 24
   mixerBlueOutBlueIn:
     overrideState: 1
-    value: 100
+    value: 51
   lift:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.8011348, y: 0.8742441, z: 1, w: -0.15457787}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 0.9478306, z: 0.91657436, w: -0.023781214}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.9754928, y: 0.9948832, z: 1, w: 0.13079669}
   masterCurve:
     overrideState: 1
     value:
