@@ -6,19 +6,24 @@ public class LocationInteraction : MonoBehaviour
 {
 
     public GameObject loungeDoor;
+    public GameObject generator;
+    public GameObject InteractionText;
+    public GameObject LobbyText;
 
     void Start() {
         loungeDoor = GameObject.FindWithTag("Lounge Door");
+        InteractionText.SetActive(false);
     }
 
     void OnTriggerStay(Collider other) {
 
-        Debug.Log("On the interaction spot!");
+        //Debug.Log("On the interaction spot!");
 
         if(this.gameObject.CompareTag("LoungeDoorTrigger")) {
 
             if(other.CompareTag("Player") && PlayerMovement.keyCollected && PlayerMovement.interact) {
                 loungeDoor.SetActive(false);
+                InteractionText.SetActive(false);
                 this.gameObject.SetActive(false);
             }
 
@@ -28,6 +33,8 @@ public class LocationInteraction : MonoBehaviour
 
             if(other.CompareTag("Player") && PlayerMovement.partCollected && PlayerMovement.interact) {
                 PlayerMovement.generatorFixed = true;
+                InteractionText.SetActive(false);
+                LobbyText.SetActive(true);
                 this.gameObject.SetActive(false);
             }
 
@@ -36,12 +43,21 @@ public class LocationInteraction : MonoBehaviour
         if(this.gameObject.CompareTag("Lobby Exit")) {
 
             if(other.CompareTag("Player") && PlayerMovement.generatorFixed && PlayerMovement.interact) {
-                
+                //SceneController.GoToVictoryScene();
+                InteractionText.SetActive(false);
                 Debug.Log("Got out!");
             }
 
         }
 
+    }
+
+    void OnTriggerEnter() {
+        InteractionText.SetActive(true);
+    }
+
+    void OnTriggerExit() {
+        InteractionText.SetActive(false);
     }
 
 }
