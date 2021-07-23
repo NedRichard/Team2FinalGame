@@ -23,6 +23,7 @@ public class LocationInteraction : MonoBehaviour
 
             if(other.CompareTag("Player") && PlayerMovement.keyCollected && PlayerMovement.interact) {
                 loungeDoor.SetActive(false);
+                PlayerMovement.loungeDoorOpened = true;
                 InteractionText.SetActive(false);
                 this.gameObject.SetActive(false);
             }
@@ -45,7 +46,7 @@ public class LocationInteraction : MonoBehaviour
             if(other.CompareTag("Player") && PlayerMovement.generatorFixed && PlayerMovement.interact) {
                 //SceneController.GoToVictoryScene();
                 InteractionText.SetActive(false);
-                Debug.Log("Got out!");
+                //Debug.Log("Got out!");
             }
 
         }

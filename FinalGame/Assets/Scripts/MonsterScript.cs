@@ -11,7 +11,7 @@ public class MonsterScript : MonoBehaviour
     public Transform pathwayHolder;
     public bool changingWaypoint = false;
     public bool waypointReached = false;
-    public static int currentWaypoint = 0;
+    public int currentWaypoint = 0;
 
 
     //For targeting player
@@ -177,23 +177,33 @@ public class MonsterScript : MonoBehaviour
 
     void ChangeWaypoint() {
 
-        Debug.Log("Changing waypoint!");
+        //Debug.Log("Changing waypoint!");
+
+
 
         //Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
         Vector3[] waypoints = new Vector3[locations.Length];
 
         int lastWaypoint = currentWaypoint;
 
-        Debug.Log("Last waypoint is " + lastWaypoint);
+        //Debug.Log("Last waypoint is " + lastWaypoint);
 
-        int randomWaypoint = Random.Range(0, waypoints.Length);
+        int maxLength;
 
-        Debug.Log("Next waypoint is " + randomWaypoint);
+        if(!PlayerMovement.loungeDoorOpened) {
+            maxLength = waypoints.Length - 2;
+        } else {
+            maxLength = waypoints.Length;
+        }
+
+        int randomWaypoint = Random.Range(0, maxLength);
+
+        //Debug.Log("Next waypoint is " + randomWaypoint);
 
         currentWaypoint = randomWaypoint;
 
         while(lastWaypoint == randomWaypoint) {
-            randomWaypoint = Random.Range(0, waypoints.Length);
+            randomWaypoint = Random.Range(0, maxLength);
             currentWaypoint = randomWaypoint;
         }
 
