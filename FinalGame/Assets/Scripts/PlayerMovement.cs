@@ -75,10 +75,12 @@ public class PlayerMovement : MonoBehaviour
         //Forward movement
         Vector3 targetPos = transform.position + (transform.forward * verticalMov);
         playerBody.MovePosition(targetPos);
+        Debug.Log(transform.eulerAngles);
 
         //Player rotation
         Quaternion targetRot = transform.rotation * Quaternion.Euler(Vector3.up * horizontalMov);
         playerBody.MoveRotation(targetRot);
+        Debug.Log(transform.eulerAngles);
 
 
     }
