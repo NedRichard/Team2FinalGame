@@ -110,8 +110,8 @@ GameObject:
   - component: {fileID: 7577855153692069236}
   - component: {fileID: 7577855153692069240}
   - component: {fileID: 7577855153692069241}
+  - component: {fileID: 6814623058613240092}
   - component: {fileID: 7577855153692069246}
-  - component: {fileID: 7577855153692069247}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Monster
@@ -235,7 +235,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7577855153692069246
+--- !u!114 &6814623058613240092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,6 +243,26 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7577855153692069239}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d775574f165b2fc44b3df19e910e8457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locations: []
+  monsterNav: {fileID: 7577855153692069241}
+  pathwayHolder: {fileID: 0}
+  changingWaypoint: 0
+  waypointReached: 0
+  player: {fileID: 0}
+  radius: 0
+  angle: 0
+--- !u!114 &7577855153692069246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577855153692069239}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65993d1f274c9fc468329c433e29c36b, type: 3}
   m_Name: 
@@ -255,23 +275,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  pathwayHolder: {fileID: 0}
   monsterNav: {fileID: 7577855153692069241}
-  player: {fileID: 0}
+  pathwayHolder: {fileID: 0}
   changingWaypoint: 0
   waypointReached: 0
---- !u!114 &7577855153692069247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7577855153692069239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9bef6c65c6e6144813383644652e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 6.4
-  angle: 0
   player: {fileID: 0}

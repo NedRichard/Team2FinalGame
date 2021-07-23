@@ -120,7 +120,7 @@ public class MonsterScript : MonoBehaviour
         && (monsterNav.gameObject.transform.position.z == locations[currentWaypoint].transform.position.z) && !playerInSight) {
             //Debug.Log("Reached current waypoint!");
             changingWaypoint = true;
-            //ChangeWaypoint();
+            ChangeWaypoint();
         }
 
         if(playerInSight) {
@@ -177,18 +177,18 @@ public class MonsterScript : MonoBehaviour
 
     void ChangeWaypoint() {
 
-        //Debug.Log("Changing waypoint!");
+        Debug.Log("Changing waypoint!");
 
         //Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
         Vector3[] waypoints = new Vector3[locations.Length];
 
         int lastWaypoint = currentWaypoint;
 
-        //Debug.Log("Last waypoint is " + lastWaypoint);
+        Debug.Log("Last waypoint is " + lastWaypoint);
 
         int randomWaypoint = Random.Range(0, waypoints.Length);
 
-        //Debug.Log("Next waypoint is " + randomWaypoint);
+        Debug.Log("Next waypoint is " + randomWaypoint);
 
         currentWaypoint = randomWaypoint;
 
