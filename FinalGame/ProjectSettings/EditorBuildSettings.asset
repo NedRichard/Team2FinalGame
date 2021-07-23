@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 500602710cdf2484f9589170f7b51d31
+  - enabled: 1
     path: Assets/Scenes/Liisa scene.unity
     guid: 8c899bd141654db4eab00f19c33eaef0
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 695b8e53a2c6eeb4ba7fc013a85a9096
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: b61bc496cbf9c8e4d89962260122e1a9
   - enabled: 0
     path: Assets/Scenes/JoniTest1.unity
     guid: e96516799e8b7eb4d9570b076e304f3f
