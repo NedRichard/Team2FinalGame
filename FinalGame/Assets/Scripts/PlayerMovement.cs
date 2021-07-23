@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool interact = false;
     public static bool keyCollected = false;
+
+    public static bool loungeDoorOpened = false;
     public static bool partCollected = false;
     public static bool generatorFixed = false;
     public static bool noteRead = false;
