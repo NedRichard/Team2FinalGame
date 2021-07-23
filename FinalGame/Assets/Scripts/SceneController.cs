@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static void GoToGameView() {
-        SceneManager.LoadScene("LiisaScene");
+        SceneManager.LoadScene("Liisa scene");
     }
 
     public static void GoToVictoryScene() {
