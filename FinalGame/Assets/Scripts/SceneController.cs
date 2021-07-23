@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static void GoToGameView() {
-        Debug.Log("Starting game!");
+        //Debug.Log("Starting game!");
         SceneManager.LoadScene("Liisa scene");
     }
 
@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     }
 
     public static void ExitGame() {
-        Debug.Log("Quitting game!");
+        //Debug.Log("Quitting game!");
         Application.Quit();
     }
 }
