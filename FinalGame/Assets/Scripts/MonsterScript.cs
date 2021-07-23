@@ -274,7 +274,8 @@ public class MonsterScript : MonoBehaviour
 
         if(other.CompareTag("Player")) {
             //Debug.Log("Got you!");
-            Application.Quit();
+            //Application.Quit();
+            SceneController.GoToGameOver();
         }
         
     }

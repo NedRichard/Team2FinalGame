@@ -44,7 +44,7 @@ public class LocationInteraction : MonoBehaviour
         if(this.gameObject.CompareTag("Lobby Exit")) {
 
             if(other.CompareTag("Player") && PlayerMovement.generatorFixed && PlayerMovement.interact) {
-                //SceneController.GoToVictoryScene();
+                SceneController.GoToVictoryScene();
                 InteractionText.SetActive(false);
                 //Debug.Log("Got out!");
             }
