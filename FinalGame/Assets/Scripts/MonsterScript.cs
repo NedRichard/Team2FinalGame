@@ -141,7 +141,7 @@ public class MonsterScript : MonoBehaviour
         && (monsterNav.gameObject.transform.position.z == locations[currentWaypoint].transform.position.z) && !playerInSight) {
             //Debug.Log("Reached current waypoint!");
             changingWaypoint = true;
-            ChangeWaypoint();
+            //ChangeWaypoint();
         }
 
         if(playerInSight) {
