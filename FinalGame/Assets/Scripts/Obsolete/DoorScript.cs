@@ -6,7 +6,7 @@ public class DoorScript : MonoBehaviour
 {
     void OnTriggerStay(Collider other) {
 
-        if(other.CompareTag("Player") && PlayerMovement.keyCollected && PlayerMovement.interact) {
+        if(other.CompareTag("Player") && GameManager.keyCollected && PlayerMovement.interact) {
             this.gameObject.SetActive(false);
         }
 
