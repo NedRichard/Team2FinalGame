@@ -7,12 +7,16 @@ public class LocationInteraction : MonoBehaviour
 
     public GameObject loungeDoor;
     public GameObject generator;
-    public GameObject InteractionText;
-    public GameObject LobbyText;
+    //public GameObject InteractionText;
+    //public GameObject LobbyText;
+
+    public GameObject LoungeLockedText;
+    public GameObject FuseMissingText;
+    public GameObject LobbyLockedText;
 
     void Start() {
         loungeDoor = GameObject.FindWithTag("Lounge Door");
-        InteractionText.SetActive(false);
+        //InteractionText.SetActive(false);
     }
 
     void OnTriggerStay(Collider other) {
@@ -21,32 +25,67 @@ public class LocationInteraction : MonoBehaviour
 
         if(this.gameObject.CompareTag("LoungeDoorTrigger")) {
 
-            if(other.CompareTag("Player") && PlayerMovement.keyCollected && PlayerMovement.interact) {
-                loungeDoor.SetActive(false);
-                PlayerMovement.loungeDoorOpened = true;
-                InteractionText.SetActive(false);
-                this.gameObject.SetActive(false);
+            if(other.CompareTag("Player") && PlayerMovement.interact) {
+
+                if(GameManager.keyCollected) {
+
+                    loungeDoor.SetActive(false);
+                    GameManager.loungeDoorOpened = true;
+
+                    //InteractionText.SetActive(false);
+                    GameManager.HideInteractiveText();
+
+                    this.gameObject.SetActive(false);
+                } else {
+                    GameManager.ShowLoungeLockedText();
+
+                    //LoungeLockedText.SetActive(true);
+                } 
+                
             }
 
         }
 
         if(this.gameObject.CompareTag("ClosetTrigger")) {
 
-            if(other.CompareTag("Player") && PlayerMovement.partCollected && PlayerMovement.interact) {
-                PlayerMovement.generatorFixed = true;
-                InteractionText.SetActive(false);
-                LobbyText.SetActive(true);
-                this.gameObject.SetActive(false);
+            if(other.CompareTag("Player") && PlayerMovement.interact) {
+
+                Debug.Log("Stayed here");
+
+                if(GameManager.partCollected) {
+                    GameManager.generatorFixed = true;
+
+                    //InteractionText.SetActive(false);
+                    GameManager.HideInteractiveText();
+
+                    //LobbyText.SetActive(true);
+                    GameManager.ShowLobbyText();
+
+                    this.gameObject.SetActive(false);
+
+                } else {
+                    GameManager.ShowFuseMissingText();
+                    //GameManager.areaUIText = true;
+                    //FuseMissingText.SetActive(true);
+                }                     
+                
             }
 
         }
 
         if(this.gameObject.CompareTag("Lobby Exit")) {
 
-            if(other.CompareTag("Player") && PlayerMovement.generatorFixed && PlayerMovement.interact) {
-                SceneController.GoToVictoryScene();
-                InteractionText.SetActive(false);
-                //Debug.Log("Got out!");
+            if(other.CompareTag("Player") && PlayerMovement.interact) {
+
+                if(GameManager.generatorFixed) {
+                    SceneController.GoToVictoryScene();
+                    //InteractionText.SetActive(false);
+                    //Debug.Log("Got out!");
+                } else {
+                    GameManager.ShowLobbyLockedText();
+                    //LobbyLockedText.SetActive(true);
+                }            
+                
             }
 
         }
@@ -54,11 +93,23 @@ public class LocationInteraction : MonoBehaviour
     }
 
     void OnTriggerEnter() {
-        InteractionText.SetActive(true);
+        //InteractionText.SetActive(true);
+        GameManager.ShowInteractiveText();
     }
 
     void OnTriggerExit() {
-        InteractionText.SetActive(false);
+        //InteractionText.SetActive(false);
+        GameManager.HideInteractiveText();
+
+        
+            GameManager.HideFuseMissingText();
+            GameManager.HideLobbyLockedText();
+            GameManager.HideLoungeLockedText();
+
+        //LoungeLockedText.SetActive(false);
+        //FuseMissingText.SetActive(false);
+        //LobbyLockedText.SetActive(false);
+
     }
 
 }
