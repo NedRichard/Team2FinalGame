@@ -50,7 +50,7 @@ public class LocationInteraction : MonoBehaviour
 
             if(other.CompareTag("Player") && PlayerMovement.interact) {
 
-                Debug.Log("Stayed here");
+                //Debug.Log("Stayed here");
 
                 if(GameManager.partCollected) {
                     GameManager.generatorFixed = true;
