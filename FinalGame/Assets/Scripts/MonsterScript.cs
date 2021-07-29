@@ -12,9 +12,7 @@ public class MonsterScript : MonoBehaviour
     public bool changingWaypoint = false;
     public bool waypointReached = false;
     public int currentWaypoint = 0;
-
     public float monsterSpeed = 8f;
-
 
     //For targeting player
     public GameObject player;
@@ -207,6 +205,8 @@ public class MonsterScript : MonoBehaviour
 
         Debug.Log("Last waypoint is " + lastWaypoint);
 
+        //Set the limit for Lounge waypoints
+
         int maxLength;
 
         if(!GameManager.loungeDoorOpened) {
@@ -215,16 +215,33 @@ public class MonsterScript : MonoBehaviour
             maxLength = waypoints.Length;
         }
 
-        int randomWaypoint = Random.Range(0, maxLength);
+        //Set Random waypoint from locations array
+        int randomWaypoint ;
 
-        Debug.Log("Next waypoint is " + randomWaypoint);
+        //currentWaypoint = randomWaypoint;
+
+        do {
+
+            randomWaypoint = Random.Range(0, maxLength);
+
+            if(randomWaypoint == currentWaypoint) {
+                Debug.Log("Same waypoint, trying again!");
+            }
+
+        } while(randomWaypoint == currentWaypoint);
 
         currentWaypoint = randomWaypoint;
 
+        Debug.Log("Next waypoint is " + randomWaypoint);
+
+        /**
         while(lastWaypoint == randomWaypoint) {
             randomWaypoint = Random.Range(0, maxLength);
             currentWaypoint = randomWaypoint;
         }
+        **/
+
+        changingWaypoint = false;
 
         /**
 
@@ -256,8 +273,6 @@ public class MonsterScript : MonoBehaviour
 
         } while (randomWaypoint == currentWaypoint);
         **/
-
-        changingWaypoint = false;
 
     }
 
