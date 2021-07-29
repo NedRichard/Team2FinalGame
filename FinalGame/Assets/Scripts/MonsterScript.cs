@@ -198,14 +198,14 @@ public class MonsterScript : MonoBehaviour
 
     void ChangeWaypoint() {
 
-        //Debug.Log("Changing waypoint!");
+        Debug.Log("Changing waypoint!");
 
         //Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
         Vector3[] waypoints = new Vector3[locations.Length];
 
         int lastWaypoint = currentWaypoint;
 
-        //Debug.Log("Last waypoint is " + lastWaypoint);
+        Debug.Log("Last waypoint is " + lastWaypoint);
 
         int maxLength;
 
@@ -217,7 +217,7 @@ public class MonsterScript : MonoBehaviour
 
         int randomWaypoint = Random.Range(0, maxLength);
 
-        //Debug.Log("Next waypoint is " + randomWaypoint);
+        Debug.Log("Next waypoint is " + randomWaypoint);
 
         currentWaypoint = randomWaypoint;
 
