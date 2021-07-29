@@ -13,6 +13,8 @@ public class MonsterScript : MonoBehaviour
     public bool waypointReached = false;
     public int currentWaypoint = 0;
 
+    public float monsterSpeed = 8f;
+
 
     //For targeting player
     public GameObject player;
@@ -22,8 +24,12 @@ public class MonsterScript : MonoBehaviour
     //For FOV functions
     public float radius;
     public float angle;
+
+    float currentRadius;
+
     Vector3 viewDirection;
     RaycastHit hit;
+
     //public float fieldOfView = 90f;
     //public float viewDistance = 30f;
 
@@ -72,7 +78,8 @@ public class MonsterScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-
+        currentRadius = radius;
+        monsterNav.speed = monsterSpeed;
         //Create a way to randomize first waypoint?
 
     }
@@ -95,8 +102,10 @@ public class MonsterScript : MonoBehaviour
                 float viewAngle = Vector3.Angle(observer.forward + Vector3.zero, direction);
 
                 if(viewAngle <= angle) {
+                    monsterNav.speed = monsterSpeed * 2;
                     playerInSight = true;
                 } else {
+                    monsterNav.speed = monsterSpeed;
                     playerInSight = false;
                 }
 
@@ -110,6 +119,18 @@ public class MonsterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //float currentRadius = radius;
+        //Debug.Log(currentRadius);
+
+        if(PlayerMovement.playerCrouch) {
+
+            radius = 5f;
+            //Debug.Log("Limited view radius: " + radius);
+        } else if(!PlayerMovement.playerCrouch) {
+            radius = currentRadius;
+            //Debug.Log(radius);
+        }
 
         if(monsterNav.gameObject.transform.position != locations[currentWaypoint].transform.position && !playerInSight) 
         {
@@ -179,8 +200,6 @@ public class MonsterScript : MonoBehaviour
 
         //Debug.Log("Changing waypoint!");
 
-
-
         //Vector3[] waypoints = new Vector3[pathwayHolder.childCount];
         Vector3[] waypoints = new Vector3[locations.Length];
 
@@ -190,7 +209,7 @@ public class MonsterScript : MonoBehaviour
 
         int maxLength;
 
-        if(!PlayerMovement.loungeDoorOpened) {
+        if(!GameManager.loungeDoorOpened) {
             maxLength = waypoints.Length - 2;
         } else {
             maxLength = waypoints.Length;
@@ -259,7 +278,10 @@ public class MonsterScript : MonoBehaviour
     }
 
     void ChasePlayer() {
-        monsterNav.SetDestination(player.transform.position);     
+        
+        
+        monsterNav.SetDestination(player.transform.position);  
+
     }
 
     void OnTriggerEnter(Collider other) {

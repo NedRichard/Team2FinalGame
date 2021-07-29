@@ -5,14 +5,16 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
 
-    public GameObject LoungeKeyText;
-    public GameObject GeneratorPartText;
-    public GameObject InteractText;
+    //public GameObject LoungeKeyText;
+    //public GameObject GeneratorPartText;
+    //public GameObject InteractText;
+
+    //public GameObject gameManager;
 
     void Start() {
-        LoungeKeyText.SetActive(false);
-        GeneratorPartText.SetActive(false);
-        InteractText.SetActive(false);
+        //LoungeKeyText.SetActive(false);
+        //GeneratorPartText.SetActive(false);
+        //InteractText.SetActive(false);
     }
 
     void OnTriggerStay(Collider other) {
@@ -23,16 +25,24 @@ public class Collectible : MonoBehaviour
 
             if(this.gameObject.CompareTag("LoungeKey")) {
                 //Debug.Log("Picked up Lounge Key!");
-                PlayerMovement.keyCollected = true;
-                LoungeKeyText.SetActive(true);
-                InteractText.SetActive(false);
+                GameManager.keyCollected = true;
+
+                //LoungeKeyText.SetActive(true);
+                //InteractText.SetActive(false);
+
+                GameManager.ShowLoungeKeyText();
+                GameManager.HideInteractiveText();
             }
 
             if(this.gameObject.CompareTag("GeneratorPart")) {
                 //Debug.Log("Picked up Generator Part!");
-                PlayerMovement.partCollected = true;
-                GeneratorPartText.SetActive(true);
-                InteractText.SetActive(false);
+                GameManager.partCollected = true;
+
+                //GeneratorPartText.SetActive(true);
+                //InteractText.SetActive(false);
+
+                GameManager.ShowGeneratorPartText();
+                GameManager.HideInteractiveText();
             }
 
             this.gameObject.SetActive(false);
@@ -40,10 +50,12 @@ public class Collectible : MonoBehaviour
     }
 
     void OnTriggerEnter() {
-        InteractText.SetActive(true);
+        //InteractText.SetActive(true);
+        GameManager.ShowInteractiveText();
     }
 
     void OnTriggerExit() {
-        InteractText.SetActive(false);
+        //InteractText.SetActive(false);
+        GameManager.HideInteractiveText();
     }
 }

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     //Player controls
     public float horizontalMov;
     public float verticalMov;
+    public static bool playerCrouch = false;
     Vector3 playerRot;
 
     //Obsolete
@@ -23,20 +24,33 @@ public class PlayerMovement : MonoBehaviour
     public float fovAngle;
     RaycastHit hit;
 
+    //Enemy distance 
+    public GameObject Enemy;
+
     //Player interactions
 
     public static bool interact = false;
-    public static bool keyCollected = false;
 
+    /**
+    public static bool keyCollected = false;
     public static bool loungeDoorOpened = false;
     public static bool partCollected = false;
     public static bool generatorFixed = false;
-    public static bool noteRead = false;
+
+    **/
+
+    //public static bool noteRead = false;
 
 
     void OnDrawGizmos() {
+
+        //Draw view radius sphere
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
+
+        //Draw enemy direction
+        Gizmos.DrawRay(transform.position, (Enemy.transform.position - transform.position).normalized * viewRadius);
+
     }
 
     void Start() {
@@ -44,10 +58,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
+
         if (Input.GetButtonDown("Jump")) {
             interact = true;
         } else {
             interact = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.E)) {
+            //Debug.Log("Player is crouching!");
+            playerCrouch = !playerCrouch;
         }
     }
 
@@ -56,12 +76,19 @@ public class PlayerMovement : MonoBehaviour
         //Vector3 forwardInput = new Vector3(0, 0, verticalMov);
 
         
+        if(!playerCrouch) {
 
-        horizontalMov = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * playerRotationSpeed;
+            //Take Player inputs
+            horizontalMov = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * playerRotationSpeed;
+            verticalMov = Input.GetAxis("Vertical") * Time.fixedDeltaTime * playerSpeed;
 
-        verticalMov = Input.GetAxis("Vertical") * Time.fixedDeltaTime * playerSpeed;
+            //Move Player
+            MovePlayer();
 
-        MovePlayer();
+        }
+        
+        //Check Enemy within range
+        EnemyInRange(transform, Enemy, viewRadius);
 
         //Quaternion deltaRot = Quaternion.Euler(playerRot * Time.fixedDeltaTime);
 
@@ -70,18 +97,47 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void EnemyInRange(Transform player, GameObject Enemy, float targetRad) {
+
+        float distToEnemy = Vector3.Distance(player.position, Enemy.transform.position);
+
+            if(distToEnemy <= targetRad) {
+                GameManager.enemyClose = true;
+                //Debug.Log("Enemy is close!");
+            } else {
+                GameManager.enemyClose = false;
+            }
+
+        /**
+
+        Vector3 dirToEnemy = (Enemy.transform.position - player.position).normalized;
+        dirToEnemy.y = 0;
+
+        if(Physics.Raycast(player.position + Vector3.zero, dirToEnemy, out hit, viewRadius)) {
+
+            if(LayerMask.LayerToName(hit.transform.gameObject.layer) == "Enemy") {
+                GameManager.enemyClose = true;
+                Debug.Log("Enemy is close!");
+            }
+        } else {
+            GameManager.enemyClose = false;
+        }
+
+        **/
+
+    }
+
     void MovePlayer() {
 
         //Forward movement
         Vector3 targetPos = transform.position + (transform.forward * verticalMov);
         playerBody.MovePosition(targetPos);
-        Debug.Log(transform.eulerAngles);
+        //Debug.Log(transform.eulerAngles);
 
         //Player rotation
         Quaternion targetRot = transform.rotation * Quaternion.Euler(Vector3.up * horizontalMov);
         playerBody.MoveRotation(targetRot);
-        Debug.Log(transform.eulerAngles);
-
+        //Debug.Log(transform.eulerAngles);
 
     }
 
