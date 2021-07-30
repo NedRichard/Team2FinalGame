@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     //Player Animations
     public Animator animator;
 
+    public AudioSource walkSound;
+
     //Obsolete
     public bool isMoving;
 
@@ -82,6 +84,22 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isCrouching", true);
         } else {
             animator.SetBool("isCrouching", false);
+        }
+
+        if(verticalMov != 0) {
+            isMoving = true;
+        } else {
+            isMoving = false;
+        }
+
+        if(isMoving) {
+
+            if(!walkSound.isPlaying) {
+                walkSound.Play();
+            }
+
+        } else {
+            walkSound.Stop();
         }
 
     }
