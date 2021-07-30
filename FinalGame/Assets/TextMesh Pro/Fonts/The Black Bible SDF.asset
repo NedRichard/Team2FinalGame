@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: The Black Bible SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: GLOW_ON
+  m_ShaderKeywords: BEVEL_ON GLOW_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -40,8 +40,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Ambient: 0.796
-    - _Bevel: 0.126
+    - _Ambient: 1
+    - _Bevel: 0.066
     - _BevelClamp: 0.982
     - _BevelOffset: -0.5
     - _BevelRoundness: 0
@@ -50,16 +50,16 @@ Material:
     - _BumpOutline: 0
     - _ColorMask: 15
     - _CullMode: 0
-    - _Diffuse: 0.6
+    - _Diffuse: 0.873
     - _FaceDilate: 0.128
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.397
-    - _GlowOffset: -0.357
-    - _GlowOuter: 0.064
-    - _GlowPower: 0.45
+    - _GlowInner: 0.162
+    - _GlowOffset: -0.553
+    - _GlowOuter: 0.087
+    - _GlowPower: 0.557
     - _GradientScale: 6
-    - _LightAngle: 6.24
+    - _LightAngle: 6.28
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _OutlineSoftness: 0.497
@@ -67,7 +67,7 @@ Material:
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
-    - _Reflectivity: 7.26
+    - _Reflectivity: 10.76
     - _ScaleRatioA: 0.8333333
     - _ScaleRatioB: 0.5704167
     - _ScaleRatioC: 0.5704167
@@ -75,7 +75,7 @@ Material:
     - _ScaleY: 1
     - _ShaderFlags: 1
     - _Sharpness: 0
-    - _SpecularPower: 2.41
+    - _SpecularPower: 0.62
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -95,12 +95,12 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _GlowColor: {r: 0.9245283, g: 0.80677485, b: 0.7980598, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ReflectOutlineColor: {r: 1, g: 0.04241266, b: 0, a: 1}
+    - _SpecularColor: {r: 1, g: 0.759434, b: 0.759434, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []
 --- !u!28 &-4263407022175794432
