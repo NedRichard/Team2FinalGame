@@ -69,14 +69,21 @@ public class PlayerMovement : MonoBehaviour
             interact = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.E) && (horizontalMov == 0 && verticalMov == 0)) {
             //Debug.Log("Player is crouching!");
             playerCrouch = !playerCrouch;
-            animator.SetBool("isCrouching", true);
+            //animator.SetBool("isCrouching", true);
         }
         else{
+            //animator.SetBool("isCrouching", false);
+        }
+
+        if(playerCrouch) {
+            animator.SetBool("isCrouching", true);
+        } else {
             animator.SetBool("isCrouching", false);
         }
+
     }
 
     void FixedUpdate() {
