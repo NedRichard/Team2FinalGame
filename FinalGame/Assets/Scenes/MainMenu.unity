@@ -1655,7 +1655,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You are investigating the school premises. It's rumored that a some kind
-    of entity is roaming the corridors at night
+    of entity is roaming the corridors at night...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2eb1f89d73464ea419faa41d2329b7d1, type: 2}
   m_sharedMaterial: {fileID: -1134777211048564770, guid: 2eb1f89d73464ea419faa41d2329b7d1, type: 2}
