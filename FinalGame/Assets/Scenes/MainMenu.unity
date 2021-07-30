@@ -1654,8 +1654,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You are investigating the school premises. It's rumored that a some kind
-    of entity is roaming the corridors at night...
+  m_text: You were investigating the school premises at night, looking for intel
+    about recent strange incidents... when you suddenly felt a weird presence around.
+    You better get out. now.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2eb1f89d73464ea419faa41d2329b7d1, type: 2}
   m_sharedMaterial: {fileID: -1134777211048564770, guid: 2eb1f89d73464ea419faa41d2329b7d1, type: 2}
@@ -1689,7 +1690,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 16
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 2.5
