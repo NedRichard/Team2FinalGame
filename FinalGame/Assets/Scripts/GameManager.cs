@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerHideText;
     public GameObject CrouchingText;
 
+    public AudioSource pickFuse;
+    public AudioSource pickKey;
+
+    public AudioSource openLounge;
+    public AudioSource fixGenerator;
 
     //Map trigger zones and collectibles
 
@@ -69,6 +74,7 @@ public class GameManager : MonoBehaviour
     //For Lounge Key UI
     public static void ShowLoungeKeyText() {
         GameManager.Instance.LoungeKeyText.SetActive(true);
+        GameManager.Instance.pickKey.Play();
     }
     public static void HideLoungeKeyText() {
         GameManager.Instance.LoungeKeyText.SetActive(false);
@@ -77,6 +83,7 @@ public class GameManager : MonoBehaviour
     //For Generator Fuse UI
     public static void ShowGeneratorPartText() {
         GameManager.Instance.GeneratorPartText.SetActive(true);
+        GameManager.Instance.pickFuse.Play();
     } 
     public static void HideGeneratorPartText() {
         GameManager.Instance.GeneratorPartText.SetActive(false);
@@ -112,6 +119,14 @@ public class GameManager : MonoBehaviour
     }
     public static void HideLoungeLockedText() {
         GameManager.Instance.LoungeLockedText.SetActive(false);
+    }
+
+    public static void PlayDoorOpenSound() {
+        GameManager.Instance.openLounge.Play();
+    }
+
+    public static void PlayFixGeneratorSound() {
+        GameManager.Instance.fixGenerator.Play();
     }
 
 }

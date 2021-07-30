@@ -11,9 +11,6 @@ public class Collectible : MonoBehaviour
 
     //public GameObject gameManager;
 
-    public AudioSource pickKey;
-    public AudioSource pickFuse;
-
     void Start() {
         //LoungeKeyText.SetActive(false);
         //GeneratorPartText.SetActive(false);
@@ -30,7 +27,7 @@ public class Collectible : MonoBehaviour
                 //Debug.Log("Picked up Lounge Key!");
                 GameManager.keyCollected = true;
 
-                pickKey.Play();
+                
                 //LoungeKeyText.SetActive(true);
                 //InteractText.SetActive(false);
 
@@ -41,7 +38,7 @@ public class Collectible : MonoBehaviour
             if(this.gameObject.CompareTag("GeneratorPart")) {
                 //Debug.Log("Picked up Generator Part!");
                 GameManager.partCollected = true;
-                pickFuse.Play();
+                
                 //GeneratorPartText.SetActive(true);
                 //InteractText.SetActive(false);
 
