@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public static bool playerCrouch = false;
     Vector3 playerRot;
 
+    //Player Animations
+    public Animator animator;
+
     //Obsolete
     public bool isMoving;
 
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start() {
         playerBody = this.GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update() {
@@ -68,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) {
             //Debug.Log("Player is crouching!");
             playerCrouch = !playerCrouch;
+            animator.SetBool("isCrouching", true);
+        }
+        else{
+            animator.SetBool("isCrouching", false);
         }
     }
 
@@ -84,6 +92,17 @@ public class PlayerMovement : MonoBehaviour
 
             //Move Player
             MovePlayer();
+
+            //CODE FOR LIISA
+            if(horizontalMov > 0 || verticalMov > 0)
+            {
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
+            //CODE FOR LIISA
 
         }
         
