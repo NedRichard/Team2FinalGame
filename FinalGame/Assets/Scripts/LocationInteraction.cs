@@ -14,6 +14,9 @@ public class LocationInteraction : MonoBehaviour
     public GameObject FuseMissingText;
     public GameObject LobbyLockedText;
 
+    public AudioSource openLounge;
+    public AudioSource fixGenerator;
+
     void Start() {
         loungeDoor = GameObject.FindWithTag("Lounge Door");
         //InteractionText.SetActive(false);
@@ -31,7 +34,7 @@ public class LocationInteraction : MonoBehaviour
 
                     loungeDoor.SetActive(false);
                     GameManager.loungeDoorOpened = true;
-
+                    openLounge.Play();
                     //InteractionText.SetActive(false);
                     GameManager.HideInteractiveText();
 
@@ -54,6 +57,7 @@ public class LocationInteraction : MonoBehaviour
 
                 if(GameManager.partCollected) {
                     GameManager.generatorFixed = true;
+                    fixGenerator.Play();
 
                     //InteractionText.SetActive(false);
                     GameManager.HideInteractiveText();

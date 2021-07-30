@@ -48,11 +48,13 @@ public class GameManager : MonoBehaviour
             PlayerHideText.SetActive(true);
         }
 
+        /**
         if(PlayerMovement.playerCrouch) {
             CrouchingText.SetActive(true);
         } else {
             CrouchingText.SetActive(false);
         }
+        **/
 
     }
 
